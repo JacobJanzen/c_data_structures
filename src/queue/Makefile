@@ -1,9 +1,11 @@
 .PHONY: all
 
-all: ../../build/queue.o
+BUILD_DIR=../../build/queue/
 
-../../build/queue.o: queue.c ../../build
-	${CC} -c -o ../../build/queue.o queue.c ${CFLAGS}
+all: ${BUILD_DIR}queue.o
 
-../../build:
-	mkdir -p ../../build
+${BUILD_DIR}queue.o: queue.c ${BUILD_DIR}
+	${CC} -c -o ${BUILD_DIR}queue.o queue.c ${CFLAGS}
+
+${BUILD_DIR}:
+	mkdir -p ${BUILD_DIR}

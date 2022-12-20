@@ -7,7 +7,7 @@ build: src
 
 test: src
 	$(MAKE) -C test/
-	./build/test
+	./build/test/test
 
 src:
 	$(MAKE) -C src/

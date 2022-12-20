@@ -1,8 +1,8 @@
 export
 
-.PHONY: all stack queue
+.PHONY: all stack queue binomial_heap
 
-all: stack queue ../build
+all: stack queue binomial_heap
 
 stack:
 	$(MAKE) -C stack/
@@ -10,5 +10,5 @@ stack:
 queue:
 	$(MAKE) -C queue/
 
-../build:
-	mkdir -p ../build
+binomial_heap:
+	$(MAKE) -C binomial_heap/

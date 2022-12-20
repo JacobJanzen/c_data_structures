@@ -1,6 +1,8 @@
 .PHONY: all
 
-all: ../../build/test_stack.o
+BUILD_DIR=../../build/test/
 
-../../build/test_stack.o: test_stack.c
-	${CC} -c -o ../../build/test_stack.o test_stack.c ${CFLAGS}
+all: ${BUILD_DIR}test_stack.o
+
+${BUILD_DIR}test_stack.o: test_stack.c
+	${CC} -c -o ${BUILD_DIR}test_stack.o test_stack.c ${CFLAGS}
