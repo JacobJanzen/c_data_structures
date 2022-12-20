@@ -1,11 +1,14 @@
 export
 
-.PHONY: all stack
+.PHONY: all stack queue
 
-all: stack ../build
+all: stack queue ../build
 
 stack:
 	$(MAKE) -C stack/
+
+queue:
+	$(MAKE) -C queue/
 
 ../build:
 	mkdir -p ../build
