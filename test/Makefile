@@ -4,7 +4,7 @@ BUILD=../build/
 TEST_BUILD=../build/test/
 
 TEST_DEPENDENCIES=${TEST_BUILD}test_stack.o ${TEST_BUILD}test_queue.o ${TEST_BUILD}test_binomial_heap.o
-DEPENDENCIES=${BUILD}/stack/stack.o ${BUILD}/queue/queue.o ${BUILD}/binomial_heap/binomial_heap.o ${BUILD}/binomial_heap/bh_free.o
+DEPENDENCIES=${BUILD}stack/stack.o ${BUILD}queue/queue.o ${BUILD}binomial_heap/binomial_heap.o ${BUILD}binomial_heap/bh_free.o
 
 .PHONY: all stack queue binomial_heap
 
