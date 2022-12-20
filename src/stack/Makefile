@@ -1,11 +1,14 @@
 .PHONY: all
 
 BUILD_DIR=../../build/stack/
+DEPS=
 
-all: ${BUILD_DIR}stack.o
+RESULT=${BUILD_DIR}stack.o
 
-${BUILD_DIR}stack.o: stack.c ${BUILD_DIR}
-	${CC} -c -o ${BUILD_DIR}stack.o stack.c ${CFLAGS}
+all: ${RESULT}
+
+${RESULT}: ${DEPS} ${BUILD_DIR}
+	${CC} -c -o ${RESULT} stack.c ${CFLAGS}
 
 ${BUILD_DIR}:
 	mkdir -p ${BUILD_DIR}

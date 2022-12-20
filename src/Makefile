@@ -1,14 +1,27 @@
 export
 
-.PHONY: all stack queue binomial_heap
+BUILD_DIR=../build/
 
-all: stack queue binomial_heap
+STACK=${BUILD_DIR}stack/stack.o
+QUEUE=${BUILD_DIR}queue/queue.o
 
-stack:
+STATIC_RESULT=${BUILD_DIR}cds.a
+SHARED_RESULT=${BUILD_DIR}libcds.so
+
+DEPS=${STACK} ${QUEUE}
+
+.PHONY: all
+
+all: ${STATIC_RESULT} ${SHARED_RESULT}
+
+${STATIC_RESULT}: ${DEPS}
+	ar r ${STATIC_RESULT} ${DEPS}
+
+${SHARED_RESULT}: ${DEPS}
+	clang -shared -o ${SHARED_RESULT} ${DEPS}
+
+${STACK}:
 	$(MAKE) -C stack/
 
-queue:
+${QUEUE}:
 	$(MAKE) -C queue/
-
-binomial_heap:
-	$(MAKE) -C binomial_heap/

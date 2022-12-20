@@ -3,22 +3,26 @@ export
 BUILD=../build/
 TEST_BUILD=../build/test/
 
-TEST_DEPENDENCIES=${TEST_BUILD}test_stack.o ${TEST_BUILD}test_queue.o ${TEST_BUILD}test_binomial_heap.o
-DEPENDENCIES=${BUILD}stack/stack.o ${BUILD}queue/queue.o ${BUILD}binomial_heap/binomial_heap.o ${BUILD}binomial_heap/bh_free.o
+STACK=${TEST_BUILD}test_stack.o
+QUEUE=${TEST_BUILD}test_queue.o
 
-.PHONY: all stack queue binomial_heap
+DEPS=${STACK} ${QUEUE}
+LIBS=${BUILD}cds.a
 
-all: stack queue binomial_heap
-	${CC} -o ${TEST_BUILD}test test.c ${TEST_DEPENDENCIES} ${DEPENDENCIES} ${CFLAGS}
+RESULT=${TEST_BUILD}test
 
-stack: ${TEST_BUILD}
+.PHONY: all
+
+all: ${RESULT}
+
+${RESULT}: ${DEPS}
+	${CC} -o ${TEST_BUILD}test test.c ${DEPS} ${LIBS} ${CFLAGS}
+
+${STACK}: ${TEST_BUILD}
 	$(MAKE) -C stack/
 
-queue: ${TEST_BUILD}
+${QUEUE}: ${TEST_BUILD}
 	$(MAKE) -C queue/
-
-binomial_heap: ${TEST_BUILD}
-	$(MAKE) -C binomial_heap/
 
 ${TEST_BUILD}:
 	mkdir -p ${TEST_BUILD}

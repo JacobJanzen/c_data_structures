@@ -1,4 +1,4 @@
-CFLAGS=-Wall -Wextra -pedantic -std=c11 -O2 -g
+CFLAGS=-Wall -Wextra -pedantic -std=c11 -O2 -g -fPIC
 export
 
 .PHONY: build clean src test
